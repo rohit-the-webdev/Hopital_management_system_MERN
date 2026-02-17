@@ -1,0 +1,211 @@
+/* ============================= */
+/* Modern Gradient Background */
+/* ============================= */
+
+.auth-bg {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-size: 300% 300%;
+  animation: gradientMove 18s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Soft Blurred Glow Circles */
+
+.auth-bg::before,
+.auth-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.5;
+}
+
+.auth-bg::before {
+  width: 350px;
+  height: 350px;
+  background: #00c6ff;
+  top: -100px;
+  left: -100px;
+}
+
+.auth-bg::after {
+  width: 400px;
+  height: 400px;
+  background: #0072ff;
+  bottom: -120px;
+  right: -120px;
+}
+
+/* ============================= */
+/* Modern Glass Card */
+/* ============================= */
+
+.auth-card {
+  width: 430px;
+  padding: 50px 45px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #ffffff;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.5),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+  transition: all 0.35s ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,0.6),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+/* ============================= */
+/* Form Controls */
+/* ============================= */
+
+.auth-card .form-control,
+.auth-card .form-select {
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.auth-card .form-control::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+/* Focus Effect with Neon Glow */
+
+.auth-card .form-control:focus,
+.auth-card .form-select:focus {
+  background: rgba(255,255,255,0.12);
+  border-color: #00e0ff;
+  box-shadow: 0 0 0 3px rgba(0,224,255,0.25);
+  color: #ffffff;
+}
+
+/* Floating Label */
+
+.form-floating > label {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  color: #00e0ff;
+}
+
+/* ============================= */
+/* Modern Button */
+/* ============================= */
+
+.auth-btn {
+  width: 100%;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #00e0ff, #0072ff);
+  border: none;
+  padding: 14px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,224,255,0.4);
+}
+
+/* Subtle Shine Effect */
+
+.auth-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  transform: skewX(-25deg);
+  transition: 0.6s;
+}
+
+.auth-btn:hover::after {
+  left: 130%;
+}
+
+/* ============================= */
+/* Branding */
+/* ============================= */
+
+.brand-icon {
+  font-size: 42px;
+  text-shadow: 0 0 15px rgba(0,224,255,0.6);
+}
+
+.small {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ============================= */
+/* Responsive */
+/* ============================= */
+
+@media (max-width: 480px) {
+  .auth-card {
+    width: 92%;
+    padding: 35px 25px;
+  }
+}
+
+/* Placeholder Color White */
+.auth-card .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* For Floating Label hidden placeholder fix */
+.auth-card .form-control::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Select Text Color White */
+.auth-card .form-select {
+  color: white !important;
+}
+
+/* Select Dropdown Options (important for some browsers) */
+.auth-card .form-select option {
+  color: black;   /* dropdown list readable */
+}
+
+/* When nothing selected */
+.auth-card .form-select:invalid {
+  color: rgba(255,255,255,0.8);
+}
+
+/* Floating Label White */
+.form-floating > label {
+  color: rgba(255,255,255,0.8);
+}
