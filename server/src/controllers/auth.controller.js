@@ -10,7 +10,7 @@ export const register = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
 
-    if (!["doctor", "patient", "receptionist"].includes(role)) {
+    if (!["doctor", "patient"].includes(role)) {
       return res.status(400).json({ message: "Invalid role" });
     }
 
@@ -33,6 +33,30 @@ export const register = async (req, res) => {
           ? "Doctor registered. Waiting for admin approval."
           : "Registration successful",
     });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// ADMIN CREATE RECEPTIONIST
+export const createReceptionist = async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    const userExists = await User.findOne({ email });
+    if (userExists)
+      return res.status(400).json({ message: "User already exists" });
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    await User.create({
+      name,
+      email,
+      password: hashedPassword,
+      role: "receptionist",
+    });
+
+    res.status(201).json({ message: "Receptionist account created successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
